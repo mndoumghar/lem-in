@@ -5,8 +5,8 @@ import (
 )
 
 var (
-	allPath    [][]string
-	nowPath   []string
+	allPath [][]string
+	nowPath []string
 	visited = make(map[string]bool)
 	room    = make(map[string][]string)
 )
@@ -55,17 +55,11 @@ func buildRoomMap(links []string) {
 		if len(rooms) != 2 {
 			continue
 		}
-		
+
 		room[rooms[0]] = append(room[rooms[0]], rooms[1])
 		room[rooms[1]] = append(room[rooms[1]], rooms[0])
 	}
 }
-
-
-
-
-
-
 
 func findMinScorePath(scores []int) (minIndex int) {
 	minScore := -1

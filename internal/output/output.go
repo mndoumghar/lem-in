@@ -2,19 +2,26 @@ package output
 
 import (
 	"fmt"
-	"mimo/internal/models"
 	"sort"
 	"strings"
+
+	"lemin/internal/parsfile"
 )
 
 type SimAnt struct {
 	ID       int
-	Path     []*models.Room
+	Path     []*parsfile.Room
 	Step     int
 	Finished bool
 }
 
-func assignAntsSmart(farm *models.AntFarm, paths []*models.Path) []*SimAnt {
+// You may need to define Path struct in parsfile if not already present
+// type Path struct {
+//     Rooms  []*Room
+//     Length int
+// }
+
+func assignAntsSmart(farm *parsfile.Graph, paths []*parsfile.Path) []*SimAnt {
 	sort.Slice(paths, func(i, j int) bool {
 		return paths[i].Length < paths[j].Length
 	})
@@ -55,7 +62,7 @@ func assignAntsSmart(farm *models.AntFarm, paths []*models.Path) []*SimAnt {
 	return ants
 }
 
-func SimulateAntsSmart(farm *models.AntFarm, paths []*models.Path) {
+func SimulateAntsSmart(farm *parsfile.Graph, paths []*parsfile.Path) {
 	if len(paths) == 0 {
 		fmt.Println("No paths available!")
 		return
@@ -75,10 +82,10 @@ func SimulateAntsSmart(farm *models.AntFarm, paths []*models.Path) {
 		for _, ant := range movingAnts {
 			if !ant.Finished && ant.Step < len(ant.Path)-1 {
 				nextRoom := ant.Path[ant.Step+1]
-				if nextRoom.IsEnd || !occupied[nextRoom.Name] {
+				if nextRoom.Isend || !occupied[nextRoom.Name] {
 					ant.Step++
 					moveLine += fmt.Sprintf("L%d-%s ", ant.ID, ant.Path[ant.Step].Name)
-					if nextRoom.IsEnd {
+					if nextRoom.Isend {
 						ant.Finished = true
 					} else {
 						occupied[nextRoom.Name] = true
@@ -92,10 +99,10 @@ func SimulateAntsSmart(farm *models.AntFarm, paths []*models.Path) {
 		remaining := []*SimAnt{}
 		for _, ant := range waitingAnts {
 			nextRoom := ant.Path[1]
-			if !occupied[nextRoom.Name] || nextRoom.IsEnd {
+			if !occupied[nextRoom.Name] || nextRoom.Isend {
 				ant.Step = 1
 				moveLine += fmt.Sprintf("L%d-%s ", ant.ID, nextRoom.Name)
-				if !nextRoom.IsEnd {
+				if !nextRoom.Isend {
 					occupied[nextRoom.Name] = true
 					newMovingAnts = append(newMovingAnts, ant)
 				}

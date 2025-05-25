@@ -1,6 +1,5 @@
 package parsfile
 
-
 type Room struct {
 	Name    string
 	X, Y    int
@@ -13,8 +12,11 @@ type Ant struct {
 	ID   int
 	Path []*Room
 }
+
 type Graph struct {
 	Rooms map[string]*Room
+	// Add AntCount if you want to store the number of ants in the graph.
+	AntCount int
 }
 
 func (g *Graph) AddRoom(name string, x, y int, isStart, isEnd bool) {
@@ -38,5 +40,4 @@ func (g *Graph) AddLink(name1, name2 string) {
 		room1.Links = append(room1.Links, room2)
 		room2.Links = append(room2.Links, room1)
 	}
-
 }

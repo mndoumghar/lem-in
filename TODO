@@ -1,2 +1,9 @@
 `mndoumghar`     Parsing File
-`oerraoui`       output
+`oerraoui`       Add BFS algorithm, update simulation code, and unify struct usage
+
+- Implemented a BFS shortest-path algorithm in internal/algo/bfs.go, using the Room and Graph structure.
+- Updated simulation logic in internal/output/output.go to use the correct fields and struct names (Graph, Room, Isend).
+- Ensured all references match the project’s data types, including proper ant assignment and movement.
+- Added/clarified the Path struct for output simulation if not already present.
+- Added AntCount field to Graph for ant distribution logic.
+- Provided clear struct definitions in internal/parsfile/struct.go for Room, Graph, and Ant.

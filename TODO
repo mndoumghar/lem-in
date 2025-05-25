@@ -1,4 +1,10 @@
 `mndoumghar`     Parsing File
+
+- Creat Function Add Roomes
+- Creat function ADD link between Rooms
+- Creat function Read File
+- Creat Function Parsfile
+
 `oerraoui`       Add BFS algorithm, update simulation code, and unify struct usage
 
 - Implemented a BFS shortest-path algorithm in internal/algo/bfs.go, using the Room and Graph structure.

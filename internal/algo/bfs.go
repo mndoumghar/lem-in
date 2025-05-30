@@ -1,6 +1,9 @@
 package algo
 
-import "lemin/internal/parsfile"
+import (
+	"fmt"
+	"lemin/internal/parsfile"
+)
 
 // roomInPath checks if a room is already in the given path (to avoid cycles).
 func roomInPath(path []*parsfile.Room, room *parsfile.Room) bool {
@@ -12,8 +15,7 @@ func roomInPath(path []*parsfile.Room, room *parsfile.Room) bool {
 	return false
 }
 
-// FindShortestPath finds the shortest path from start to end using BFS.
-// Returns the path as a slice of *parsfile.Room, or nil if no path is found.
+
 func FindShortestPath(start *parsfile.Room, end *parsfile.Room) []*parsfile.Room {
 	type state struct {
 		Room *parsfile.Room
@@ -42,4 +44,47 @@ func FindShortestPath(start *parsfile.Room, end *parsfile.Room) []*parsfile.Room
 		}
 	}
 	return nil
+}
+
+
+
+
+
+
+
+
+
+
+
+// tedting ...
+
+func SimulateAnts(ants int, paths [][]string) {
+	var antList []Ant
+	antID := 1
+
+	for i := 0; i < ants; i++ {
+		path := paths[i % len(paths)] 
+		antList = append(antList, Ant{
+			ID: antID,
+			Path: path,
+			Pos: 0, 
+		})
+		antID++
+	}
+
+	fmt.Println("Simulation starts:")
+	for {
+		done := true
+		for i := 0; i < len(antList); i++ {
+			if antList[i].Pos < len(antList[i].Path)-1 {
+				antList[i].Pos++
+				fmt.Printf("L%d-%s ", antList[i].ID, antList[i].Path[antList[i].Pos])
+				done = false
+			}
+		}
+		fmt.Println()
+		if done {
+			break
+		}
+	}
 }

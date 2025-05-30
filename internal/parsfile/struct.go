@@ -14,15 +14,20 @@ type Ant struct {
 }
 
 type Graph struct {
-	Rooms map[string]*Room
-	// Add AntCount if you want to store the number of ants in the graph.
+	Rooms    map[string]*Room
 	AntCount int
+	Start    *Room
+	End      *Room
 }
+
 
 func (g *Graph) AddRoom(name string, x, y int, isStart, isEnd bool) {
 	if g.Rooms == nil {
 		g.Rooms = make(map[string]*Room)
 	}
+
+
+
 	g.Rooms[name] = &Room{
 		Name:    name,
 		X:       x,

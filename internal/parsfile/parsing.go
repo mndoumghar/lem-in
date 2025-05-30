@@ -85,7 +85,6 @@ func isDigit(s string) bool {
 	return err == nil
 }
 
-// 🧠 دالة DFS لإيجاد جميع المسارات
 func FindAllPathsDFS(graph *Graph, startName, endName string) [][]string {
 	var paths [][]string
 	visited := make(map[string]bool)

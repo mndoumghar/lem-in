@@ -5,7 +5,7 @@ import (
 )
 
 var (
-	allPath      [][]string
+	allPath    [][]string
 	nowPath   []string
 	visited = make(map[string]bool)
 	room    = make(map[string][]string)

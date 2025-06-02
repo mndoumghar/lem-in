@@ -11,6 +11,7 @@ type Ant struct {
 	position int
 }
 
+
 type Path struct {
 	id    int
 	rooms []string

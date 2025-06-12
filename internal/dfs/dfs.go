@@ -5,8 +5,8 @@ import (
 )
 
 var (
-	allPath    [][]string
-	nowPath   []string
+	allPath [][]string
+	nowPath []string
 	visited = make(map[string]bool)
 	room    = make(map[string][]string)
 )
@@ -23,7 +23,6 @@ func Dfs(start, end string) {
 	}
 	for _, char := range room[start] {
 		if !visited[char] {
-
 			Dfs(char, end)
 		}
 	}
@@ -49,25 +48,17 @@ func FindPaths(start, end string, links []string) [][]string {
 	return allPath
 }
 
-
-
 func buildRoomMap(links []string) {
 	for _, link := range links {
 		rooms := strings.Split(link, "-")
 		if len(rooms) != 2 {
 			continue
 		}
-		
+
 		room[rooms[0]] = append(room[rooms[0]], rooms[1])
 		room[rooms[1]] = append(room[rooms[1]], rooms[0])
 	}
 }
-
-
-
-
-
-
 
 func findMinScorePath(scores []int) (minIndex int) {
 	minScore := -1

@@ -32,5 +32,8 @@ func main() {
 		fmt.Println("ERROR: invalid data format, no path found")
 		return
 	}
+	
+  
+
 	movement.SimulateAntMovement(paths, nmla.AntNum)
 }

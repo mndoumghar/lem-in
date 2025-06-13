@@ -2,13 +2,17 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"lemin/internal/dfs"
 	"lemin/internal/movement"
 
+<<<<<<< HEAD
+=======
+	//"lemin/internal/movement"
+>>>>>>> da1396dfc05808e7c9232436243615b356e036ee
 
 	"lemin/internal/ants"
-	"os"
 )
 
 func main() {
@@ -31,8 +35,14 @@ func main() {
 		fmt.Println("ERROR: invalid data format, no path found")
 		return
 	}
+<<<<<<< HEAD
 	fmt.Println(paths)
 
 	movement.SimulateAntMovement(paths, nmla.AntNum)
+=======
+	
+  
+>>>>>>> da1396dfc05808e7c9232436243615b356e036ee
 
+	movement.SimulateAntMovement(paths, nmla.AntNum)
 }

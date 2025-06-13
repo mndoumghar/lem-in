@@ -11,6 +11,7 @@ var (
 	room    = make(map[string][]string)
 )
 
+
 func Dfs(start, end string) {
 	visited[start] = true
 	nowPath = append(nowPath, start)
@@ -23,7 +24,6 @@ func Dfs(start, end string) {
 	}
 	for _, char := range room[start] {
 		if !visited[char] {
-
 			Dfs(char, end)
 		}
 	}
@@ -48,8 +48,6 @@ func FindPaths(start, end string, links []string) [][]string {
 	Dfs(start, end)
 	return allPath
 }
-
-
 
 func buildRoomMap(links []string) {
 	for _, link := range links {
